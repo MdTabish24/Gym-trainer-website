@@ -9,7 +9,7 @@ export default defineConfig({
       '@': path.resolve(__dirname, './src'),
     },
   },
-  base: '/maaz-fitness-website/',
+  base: '/Gym-trainer-Webiste/',
   build: {
     outDir: 'dist',
     assetsDir: 'assets',

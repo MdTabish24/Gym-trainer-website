@@ -6,9 +6,10 @@ import HomePage from '@/pages/HomePage';
 import AboutPage from '@/pages/AboutPage';
 import ServicesPage from '@/pages/ServicesPage';
 import TransformationsPage from '@/pages/TransformationsPage';
-import BlogPage from '@/pages/BlogPage';
 import GalleryPage from '@/pages/GalleryPage';
 import ContactPage from '@/pages/ContactPage';
+import DietPlanPage from '@/pages/DietPlanPage';
+import WorkoutPlanPage from '@/pages/WorkoutPlanPage';
 import AnimatedCursor from '@/components/AnimatedCursor';
 
 function App() {
@@ -35,9 +36,10 @@ function App() {
             <Route path="/about" element={<AboutPage />} />
             <Route path="/services" element={<ServicesPage />} />
             <Route path="/transformations" element={<TransformationsPage />} />
-            <Route path="/blog" element={<BlogPage />} />
             <Route path="/gallery" element={<GalleryPage />} />
             <Route path="/contact" element={<ContactPage />} />
+            <Route path="/diet-plan" element={<DietPlanPage />} />
+            <Route path="/workout-plan" element={<WorkoutPlanPage />} />
           </Routes>
         </AnimatePresence>
       </Layout>
