@@ -31,7 +31,7 @@ const AboutPage = () => {
             </p>
           </motion.div>
 
-          {/* Main Content Grid */}
+          {/* Main Content Grid hii*/}
           <div className="grid lg:grid-cols-3 gap-8 mb-16">
             {/* Profile Card */}
             <motion.div
