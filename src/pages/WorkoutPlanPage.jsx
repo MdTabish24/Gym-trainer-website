@@ -18,6 +18,8 @@ const WorkoutPlanPage = () => {
   });
   const [workoutPlan, setWorkoutPlan] = useState(null);
   const [loading, setLoading] = useState(false);
+  const [selectedExercise, setSelectedExercise] = useState(null);
+  const [showExerciseModal, setShowExerciseModal] = useState(false);
 
   const handleInputChange = (e) => {
     const newFormData = {
@@ -245,8 +247,8 @@ const WorkoutPlanPage = () => {
 
       setLoading(false);
       toast({
-        title: "Workout Plan Generated!",
-        description: "Your personalized workout plan is ready."
+        title: "Maaz Workout Plan Generated!",
+        description: "Your Maaz personalized workout plan is ready."
       });
     }, 1000);
   };
@@ -268,6 +270,95 @@ const WorkoutPlanPage = () => {
     }
 
     generateWorkoutPlan();
+  };
+
+  const getExerciseDemo = (exerciseName) => {
+    const exerciseData = {
+      // Push exercises
+      "Push-ups": {
+        visual: "🤸‍♂️",
+        steps: ["Start in plank position", "Lower chest to ground", "Push back up", "Keep core tight"],
+        tips: "Keep straight line from head to heels",
+        muscles: "Chest, Shoulders, Triceps"
+      },
+      "Bench Press": {
+        visual: "🏋️‍♂️",
+        steps: ["Lie on bench, grip bar", "Lower to chest", "Press up explosively", "Control the descent"],
+        tips: "Keep feet planted, arch back slightly",
+        muscles: "Chest, Shoulders, Triceps"
+      },
+      "Overhead Press": {
+        visual: "🏋️‍♀️",
+        steps: ["Stand with bar at shoulders", "Press overhead", "Lock out arms", "Lower with control"],
+        tips: "Keep core tight, don't arch back",
+        muscles: "Shoulders, Triceps, Core"
+      },
+      // Pull exercises
+      "Pull-ups": {
+        visual: "🤸‍♂️",
+        steps: ["Hang from bar", "Pull chest to bar", "Lower with control", "Full arm extension"],
+        tips: "Engage lats, avoid swinging",
+        muscles: "Lats, Biceps, Rear Delts"
+      },
+      "Deadlifts": {
+        visual: "🏋️‍♂️",
+        steps: ["Stand over bar", "Grip and lift", "Drive through heels", "Stand tall, squeeze glutes"],
+        tips: "Keep bar close to body, neutral spine",
+        muscles: "Hamstrings, Glutes, Back"
+      },
+      "Barbell Rows": {
+        visual: "🏋️‍♀️",
+        steps: ["Hinge at hips", "Pull bar to chest", "Squeeze shoulder blades", "Lower with control"],
+        tips: "Keep chest up, core engaged",
+        muscles: "Lats, Rhomboids, Biceps"
+      },
+      // Leg exercises
+      "Squats": {
+        visual: "🏃‍♂️",
+        steps: ["Stand with feet shoulder-width", "Lower hips back and down", "Go to parallel", "Drive through heels up"],
+        tips: "Keep knees tracking over toes",
+        muscles: "Quads, Glutes, Hamstrings"
+      },
+      "Lunges": {
+        visual: "🤸‍♀️",
+        steps: ["Step forward", "Lower back knee", "Push back to start", "Alternate legs"],
+        tips: "Keep front knee over ankle",
+        muscles: "Quads, Glutes, Hamstrings"
+      },
+      // Core exercises
+      "Plank": {
+        visual: "🧘‍♂️",
+        steps: ["Start in push-up position", "Hold on forearms", "Keep straight line", "Breathe normally"],
+        tips: "Don't let hips sag or pike up",
+        muscles: "Core, Shoulders, Glutes"
+      }
+    };
+
+    // Find closest match for exercise name
+    const exactMatch = exerciseData[exerciseName];
+    if (exactMatch) return exactMatch;
+
+    // Fuzzy matching for similar exercises
+    const exerciseKeys = Object.keys(exerciseData);
+    const match = exerciseKeys.find(key => 
+      exerciseName.toLowerCase().includes(key.toLowerCase()) || 
+      key.toLowerCase().includes(exerciseName.toLowerCase().split(' ')[0])
+    );
+    
+    return match ? exerciseData[match] : {
+      visual: "💪",
+      steps: ["Position yourself correctly", "Perform the movement", "Control the motion", "Return to start"],
+      tips: "Focus on proper form over weight",
+      muscles: "Target muscle groups"
+    };
+  };
+
+  const handleExerciseClick = (exerciseName) => {
+    setSelectedExercise({
+      name: exerciseName,
+      ...getExerciseDemo(exerciseName)
+    });
+    setShowExerciseModal(true);
   };
 
   return (
@@ -425,11 +516,11 @@ const WorkoutPlanPage = () => {
               animate={{ opacity: 1, x: 0 }}
               className="lg:col-span-2 bg-card rounded-lg shadow-lg p-6 border"
             >
-              <h2 className="text-2xl font-semibold mb-6 text-foreground">Your Workout Plan</h2>
+              <h2 className="text-2xl font-semibold mb-6 text-foreground">Maaz Suggested Workout Plan</h2>
               
               {!workoutPlan ? (
                 <div className="text-center text-muted-foreground py-12">
-                  <p>Fill the form to generate your personalized workout plan</p>
+                  <p>Fill the form to generate your Maaz personalized workout plan</p>
                 </div>
               ) : (
                 <div className="space-y-6">
@@ -488,8 +579,15 @@ const WorkoutPlanPage = () => {
                             </thead>
                             <tbody>
                               {dayPlan.exercises.map((exercise, index) => (
-                                <tr key={index} className="border-b">
-                                  <td className="py-2 font-medium text-foreground">{exercise.name}</td>
+                                <tr key={index} className="border-b hover:bg-secondary/10 transition-colors">
+                                  <td className="py-2 font-medium text-foreground">
+                                    <button 
+                                      onClick={() => handleExerciseClick(exercise.name)}
+                                      className="text-left hover:text-primary transition-colors cursor-pointer underline-offset-4 hover:underline"
+                                    >
+                                      {exercise.name}
+                                    </button>
+                                  </td>
                                   <td className="py-2 text-muted-foreground">{exercise.sets}</td>
                                   <td className="py-2 text-muted-foreground">{exercise.reps}</td>
                                   <td className="py-2 text-muted-foreground">{exercise.rest}</td>
@@ -505,7 +603,7 @@ const WorkoutPlanPage = () => {
 
                   {/* Professional Tips */}
                   <div className="bg-secondary/20 rounded-lg p-4 border">
-                    <h3 className="font-semibold text-lg mb-3 text-foreground">Professional Tips</h3>
+                    <h3 className="font-semibold text-lg mb-3 text-foreground">Maaz Professional Tips</h3>
                     <ul className="text-muted-foreground space-y-2 text-sm">
                       {workoutPlan.tips.map((tip, index) => (
                         <li key={index}>• {tip}</li>
@@ -520,6 +618,62 @@ const WorkoutPlanPage = () => {
               )}
             </motion.div>
           </div>
+
+          {/* Exercise Demo Modal */}
+          {showExerciseModal && selectedExercise && (
+            <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4">
+              <motion.div
+                initial={{ opacity: 0, scale: 0.9 }}
+                animate={{ opacity: 1, scale: 1 }}
+                className="bg-card rounded-lg shadow-xl max-w-md w-full p-6 border"
+              >
+                <div className="flex justify-between items-center mb-4">
+                  <h3 className="text-xl font-semibold text-foreground">{selectedExercise.name}</h3>
+                  <button 
+                    onClick={() => setShowExerciseModal(false)}
+                    className="text-muted-foreground hover:text-foreground text-2xl"
+                  >
+                    ×
+                  </button>
+                </div>
+                
+                {/* Visual Demo */}
+                <div className="text-center mb-6">
+                  <div className="text-6xl mb-2">{selectedExercise.visual}</div>
+                  <p className="text-sm text-muted-foreground">Visual representation</p>
+                </div>
+                
+                {/* Target Muscles */}
+                <div className="mb-4">
+                  <h4 className="font-medium text-foreground mb-2">Target Muscles:</h4>
+                  <p className="text-sm text-muted-foreground">{selectedExercise.muscles}</p>
+                </div>
+                
+                {/* Steps */}
+                <div className="mb-4">
+                  <h4 className="font-medium text-foreground mb-2">How to Perform:</h4>
+                  <ol className="text-sm text-muted-foreground space-y-1">
+                    {selectedExercise.steps.map((step, index) => (
+                      <li key={index}>{index + 1}. {step}</li>
+                    ))}
+                  </ol>
+                </div>
+                
+                {/* Tips */}
+                <div className="bg-primary/10 rounded-lg p-3 border">
+                  <h4 className="font-medium text-foreground mb-1">Pro Tip:</h4>
+                  <p className="text-sm text-muted-foreground">{selectedExercise.tips}</p>
+                </div>
+                
+                <Button 
+                  onClick={() => setShowExerciseModal(false)}
+                  className="w-full mt-4"
+                >
+                  Got It!
+                </Button>
+              </motion.div>
+            </div>
+          )}
         </motion.div>
       </div>
     </div>

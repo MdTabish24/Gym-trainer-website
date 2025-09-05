@@ -1,5 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import { Link } from 'react-router-dom';
 import { Instagram, Twitter, Youtube, Mail } from 'lucide-react';
 import { useToast } from '@/components/ui/use-toast';
 
@@ -19,7 +20,7 @@ const Footer = () => {
       <div className="max-w-6xl mx-auto px-4 py-12">
         <div className="grid md:grid-cols-3 gap-8">
           <div>
-            <h3 className="text-2xl font-bold mb-4">Maaz Shoaib</h3>
+            <h3 className="text-2xl font-bold mb-4">Maaz Momin</h3>
             <p className="text-muted-foreground mb-4">
               Expert fitness trainer and nutritionist helping you achieve your dream physique and optimal health.
             </p>
@@ -47,11 +48,17 @@ const Footer = () => {
           <div>
             <h4 className="text-lg font-semibold mb-4">Quick Links</h4>
             <ul className="space-y-2">
-              {['About', 'Services', 'Transformations', 'Blog', 'Contact'].map((link) => (
-                <li key={link}>
-                  <a href={`/${link.toLowerCase()}`} className="text-muted-foreground hover:text-primary transition-colors">
-                    {link}
-                  </a>
+              {[
+                { name: 'About', path: '/about' },
+                { name: 'Services', path: '/services' },
+                { name: 'Transformations', path: '/transformations' },
+                { name: 'Gallery', path: '/gallery' },
+                { name: 'Contact', path: '/contact' }
+              ].map((link) => (
+                <li key={link.name}>
+                  <Link to={link.path} className="text-muted-foreground hover:text-primary transition-colors">
+                    {link.name}
+                  </Link>
                 </li>
               ))}
             </ul>
@@ -70,7 +77,7 @@ const Footer = () => {
         </div>
 
         <div className="border-t mt-8 pt-8 text-center text-muted-foreground">
-          <p>&copy; 2024 Maaz Shoaib. All rights reserved.</p>
+          <p>&copy; 2021-2025 Maaz Momin. All rights reserved.</p>
         </div>
       </div>
     </footer>

@@ -45,7 +45,7 @@ const Header = () => {
       <div className="max-w-6xl mx-auto px-4">
         <div className="flex items-center justify-between h-16">
           <Link to="/" className="text-2xl font-bold text-primary">
-            Maaz Shoaib
+            Maaz Momin
           </Link>
 
           <nav className="hidden md:flex items-center space-x-8">

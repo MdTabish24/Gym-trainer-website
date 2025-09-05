@@ -9,34 +9,59 @@ const services = [
   {
     name: "Personal Training",
     desc: "One-on-one coaching at its best. Fully customized workout and nutrition plans designed for peak performance.",
-    price: "From $80/session",
-    features: ["Custom workout plans", "Nutrition guidance", "Progress tracking", "24/7 support"]
+    price: "Starts From ₹400/session",
+    features: [
+      "Custom workout plans",
+      "Nutrition guidance",
+      "Progress tracking",
+      "24/7 support",
+      "Visible Results"
+    ]
   },
   {
     name: "Online Coaching",
     desc: "Get expert guidance from anywhere. Perfect for busy schedules with flexible training options.",
-    price: "From $150/month",
-    features: ["Weekly check-ins", "Custom meal plans", "Video form analysis", "App-based tracking"]
+    price: "Starts From ₹1000/month",
+    features: [
+      "Weekly check-ins",
+      "Custom meal plans",
+      "Video form analysis",
+      "Personalized Workout",
+      "Goal Setting & Reviews"
+    ]
   },
   {
     name: "Nutrition Coaching",
     desc: "Transform your relationship with food. Learn sustainable eating habits for long-term success.",
-    price: "From $120/month",
-    features: ["Personalized meal plans", "Macro calculations", "Recipe suggestions", "Habit coaching"]
+    price: "Starts From ₹700/month",
+    features: [
+      "Personalized meal plans",
+      "Macro calculations",
+      "Recipe suggestions",
+      "Habit coaching",
+      "Sustainable Lifestyle Tips"
+    ]
   },
   {
     name: "Group Training",
     desc: "Train with friends and stay motivated together. Small group sessions for maximum attention.",
-    price: "From $40/session",
-    features: ["Small groups (2-4 people)", "Shared motivation", "Cost-effective", "Fun atmosphere"]
+    price: "Starts From ₹200/session per person",
+    features: [
+      "Small groups (2-4 people)",
+      "Shared motivation",
+      "Cost-effective",
+      "Fun atmosphere",
+      "Faster Results"
+    ]
   }
 ];
+
 
 const ServicesPage = () => {
   return (
     <PageTransition>
       <Helmet>
-        <title>Fitness Services | Maaz Shoaib Personal Training</title>
+        <title>Fitness Services | Maaz Momin Personal Training</title>
         <meta name="description" content="Explore our comprehensive fitness services including personal training, online coaching, nutrition guidance, and group sessions." />
       </Helmet>
 
@@ -46,9 +71,9 @@ const ServicesPage = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-            className="text-center mb-16"
+            className="text-center mb-16" 
           >
-            <h1 className="text-4xl md:text-6xl font-bold mb-6">My Services</h1>
+            <h1 className="text-4xl md:text-6xl font-bold mb-6">Choose your Roadmap to Health & Strength</h1>
             <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
               Choose the perfect training option that fits your lifestyle and goals
             </p>

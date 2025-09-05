@@ -1,0 +1,1 @@
+Scan entire repo + requirements + SDK integrations, then refactor API calls for DynamoDB + add retry logic + logging.

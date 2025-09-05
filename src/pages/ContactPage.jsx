@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Helmet } from 'react-helmet-async';
 import PageTransition from '@/components/PageTransition';
 import { motion } from 'framer-motion';
@@ -10,14 +10,35 @@ import { useToast } from '@/components/ui/use-toast';
 
 const ContactPage = () => {
   const { toast } = useToast();
+  const [formData, setFormData] = useState({
+    firstName: '',
+    lastName: '',
+    phone: '',
+    age: '',
+    goal: '',
+    message: ''
+  });
+
+  const handleInputChange = (e) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value
+    });
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    
+    const message = `Hi Maaz! I'm interested in your fitness services.\n\nMy Details:\n• Name: ${formData.firstName} ${formData.lastName}\n• Phone: ${formData.phone}\n• Age: ${formData.age}\n• Goal: ${formData.goal}\n• Message: ${formData.message}`;
+    
+    const whatsappUrl = `https://wa.me/917666987232?text=${encodeURIComponent(message)}`;
+    
+    window.open(whatsappUrl, '_blank');
+    
     toast({
-      title: "✅ Message Sent!",
-      description: "Thanks for reaching out! I'll get back to you shortly.",
+      title: "✅ Redirecting to WhatsApp!",
+      description: "Opening WhatsApp with your details filled in.",
     });
-    e.target.reset();
   };
 
   return (
@@ -75,37 +96,86 @@ const ContactPage = () => {
                 <div className="grid grid-cols-2 gap-4">
                   <div>
                     <Label htmlFor="firstName">First Name</Label>
-                    <Input id="firstName" name="firstName" required />
+                    <Input 
+                      id="firstName" 
+                      name="firstName" 
+                      value={formData.firstName}
+                      onChange={handleInputChange}
+                      required 
+                    />
                   </div>
                   <div>
                     <Label htmlFor="lastName">Last Name</Label>
-                    <Input id="lastName" name="lastName" required />
+                    <Input 
+                      id="lastName" 
+                      name="lastName" 
+                      value={formData.lastName}
+                      onChange={handleInputChange}
+                      required 
+                    />
                   </div>
-                </div>
-
-                <div>
-                  <Label htmlFor="email">Email</Label>
-                  <Input id="email" name="email" type="email" required />
                 </div>
 
                 <div>
                   <Label htmlFor="phone">Phone Number</Label>
-                  <Input id="phone" name="phone" type="tel" />
+                  <Input 
+                    id="phone" 
+                    name="phone" 
+                    type="tel" 
+                    value={formData.phone}
+                    onChange={handleInputChange}
+                    required 
+                  />
+                </div>
+
+                <div className="grid grid-cols-2 gap-4">
+                  <div>
+                    <Label htmlFor="age">Age</Label>
+                    <Input 
+                      id="age" 
+                      name="age" 
+                      type="number" 
+                      min="16" 
+                      max="80"
+                      value={formData.age}
+                      onChange={handleInputChange}
+                      required 
+                    />
+                  </div>
+                  <div>
+                    <Label htmlFor="goal">Fitness Goal</Label>
+                    <select
+                      id="goal"
+                      name="goal"
+                      value={formData.goal}
+                      onChange={handleInputChange}
+                      className="w-full p-3 border rounded-lg focus:ring-2 focus:ring-primary bg-background text-foreground"
+                      required
+                    >
+                      <option value="">Select Goal</option>
+                      <option value="muscle">Muscle Building</option>
+                      <option value="fat-loss">Fat Loss</option>
+                      <option value="maintain">Maintain Weight</option>
+                      <option value="stamina">Stamina & Endurance</option>
+                      <option value="sports">Sports Training</option>
+                    </select>
+                  </div>
                 </div>
 
                 <div>
-                  <Label htmlFor="goals">Fitness Goals</Label>
+                  <Label htmlFor="message">Additional Message (Optional)</Label>
                   <Textarea 
-                    id="goals" 
-                    name="goals" 
-                    placeholder="Tell me about your fitness goals and what you'd like to achieve..."
-                    rows={4}
-                    required
+                    id="message" 
+                    name="message" 
+                    value={formData.message}
+                    onChange={handleInputChange}
+                    placeholder="Any specific questions or additional information..."
+                    rows={3}
                   />
                 </div>
 
                 <Button type="submit" className="w-full">
-                  Send Message
+                  Contact via WhatsApp
                 </Button>
               </form>
             </motion.div>

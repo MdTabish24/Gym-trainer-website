@@ -35,8 +35,8 @@ const HomePage = () => {
   return (
     <PageTransition>
       <Helmet>
-        <title>Maaz Shoaib | Expert Fitness Trainer & Nutritionist</title>
-        <meta name="description" content="Transform your body with Maaz Shoaib, expert fitness trainer and nutritionist. Personalized training, nutrition plans, and lifestyle coaching." />
+        <title>Maaz Momin | Expert Fitness Trainer & Nutritionist</title>
+        <meta name="description" content="Transform your body with Maaz Momin, expert fitness trainer and nutritionist. Personalized training, nutrition plans, and lifestyle coaching." />
       </Helmet>
 
       {/* Hero Section */}
@@ -79,7 +79,7 @@ const HomePage = () => {
             >
               <Button asChild size="lg" className="text-lg px-8 py-6">
                 <Link to="/contact">
-                  Start Your Journey <ArrowRight className="ml-2 h-5 w-5" />
+                  Unleash Your Strength <ArrowRight className="ml-2 h-5 w-5" />
                 </Link>
               </Button>
               <Button asChild variant="outline" size="lg" className="text-lg px-8 py-6">
@@ -122,7 +122,7 @@ const HomePage = () => {
               variants={fadeIn('up', 0.2)}
               className="text-4xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-orange-400 via-red-400 to-yellow-400 bg-clip-text text-transparent"
             >
-              Why Choose Me?
+              Your Fitness, Our Priority
             </motion.h2>
           </motion.div>
 
@@ -140,7 +140,7 @@ const HomePage = () => {
                   {/* Before Image */}
                   <div className="absolute inset-0">
                     <img 
-                      src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=400&h=320&fit=crop" 
+                      src="https://mdtabish24.github.io/Gym-trainer-website/beforeimg.jpg" 
                       alt="Before transformation"
                       className="w-full h-full object-cover"
                     />
@@ -156,7 +156,7 @@ const HomePage = () => {
                     id="afterImage"
                   >
                     <img 
-                      src="https://images.unsplash.com/photo-1583454110551-21f2fa2afe61?w=400&h=320&fit=crop" 
+                      src="https://mdtabish24.github.io/Gym-trainer-website/afterimg.jpg" 
                       alt="After transformation"
                       className="w-full h-full object-cover"
                     />
@@ -225,9 +225,8 @@ const HomePage = () => {
                 {/* Stats Badges */}
                 <div className="grid grid-cols-3 gap-4">
                   {[
-                    { label: "Clients Transformed", value: "500+", color: "from-orange-400 to-red-400" },
                     { label: "Success Rate", value: "95%", color: "from-red-400 to-pink-400" },
-                    { label: "Years Experience", value: "8+", color: "from-yellow-400 to-orange-400" }
+                    { label: "Years Experience", value: "4+", color: "from-yellow-400 to-orange-400" }
                   ].map((stat, i) => (
                     <div key={i} className="text-center">
                       <div className={`bg-gradient-to-r ${stat.color} p-0.5 rounded-xl mb-2`}>

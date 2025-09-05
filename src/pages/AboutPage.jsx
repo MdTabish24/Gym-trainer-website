@@ -10,8 +10,8 @@ const AboutPage = () => {
   return (
     <PageTransition>
       <Helmet>
-        <title>About Maaz Shoaib | Expert Fitness Trainer</title>
-        <meta name="description" content="Learn about Maaz Shoaib's journey as a fitness trainer and nutritionist. Discover his expertise and passion for helping others achieve their fitness goals." />
+        <title>About Maaz Momin | Expert Fitness Trainer</title>
+        <meta name="description" content="Learn about Maaz Momin's journey as a fitness trainer and nutritionist. Discover his expertise and passion for helping others achieve their fitness goals." />
       </Helmet>
 
       <div className="min-h-screen py-20 px-4 bg-gradient-to-br from-background via-background to-primary/5">
@@ -56,7 +56,7 @@ const AboutPage = () => {
                 </div>
                 
                 <div className="text-center mb-6">
-                  <h2 className="text-2xl font-bold text-white mb-2">Maaz Shoaib</h2>
+                  <h2 className="text-2xl font-bold text-white mb-2">Maaz Momin</h2>
                   <p className="text-orange-400 font-semibold">Certified Fitness Expert</p>
                   <p className="text-gray-300 text-sm mt-2">8+ Years Experience</p>
                 </div>
@@ -64,8 +64,8 @@ const AboutPage = () => {
                 {/* Quick Stats */}
                 <div className="grid grid-cols-2 gap-4 mb-6">
                   <div className="text-center p-3 bg-white/10 rounded-xl">
-                    <div className="text-2xl font-bold text-orange-400">500+</div>
-                    <div className="text-xs text-gray-300">Clients Trained</div>
+                    <div className="text-2xl font-bold text-orange-400">4+</div>
+                    <div className="text-xs text-gray-300">Years of Experience</div>
                   </div>
                   <div className="text-center p-3 bg-white/10 rounded-xl">
                     <div className="text-2xl font-bold text-red-400">95%</div>
