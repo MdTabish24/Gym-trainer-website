@@ -44,8 +44,8 @@ const AboutPage = () => {
                 {/* Profile Image */}
                 <div className="relative mb-6">
                   <div className="w-32 h-32 mx-auto rounded-full bg-gradient-to-r from-orange-400 to-red-400 p-1">
-                    <img 
-                      src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=200&h=200&fit=crop&crop=face" 
+                    <img
+                      src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=200&h=200&fit=crop&crop=face"
                       alt="Maaz Shoaib"
                       className="w-full h-full rounded-full object-cover"
                     />
@@ -54,13 +54,13 @@ const AboutPage = () => {
                     <Check className="h-4 w-4 text-white" />
                   </div>
                 </div>
-                
+
                 <div className="text-center mb-6">
                   <h2 className="text-2xl font-bold text-white mb-2">Maaz Momin</h2>
                   <p className="text-orange-400 font-semibold">Certified Fitness Expert</p>
                   <p className="text-gray-300 text-sm mt-2">8+ Years Experience</p>
                 </div>
-                
+
                 {/* Quick Stats */}
                 <div className="grid grid-cols-2 gap-4 mb-6">
                   <div className="text-center p-3 bg-white/10 rounded-xl">
@@ -90,12 +90,12 @@ const AboutPage = () => {
                 </h3>
                 <div className="space-y-4 text-gray-300 leading-relaxed">
                   <p>
-                    My transformation began 8 years ago when I was overweight and struggling with confidence. 
-                    That personal journey from 95kg to 75kg of lean muscle taught me that fitness isn't just about 
+                    My transformation began 8 years ago when I was overweight and struggling with confidence.
+                    That personal journey from 95kg to 75kg of lean muscle taught me that fitness isn't just about
                     physical change—it's about mental resilience and lifestyle transformation.
                   </p>
                   <p>
-                    Today, I combine scientific knowledge with real-world experience to help others achieve 
+                    Today, I combine scientific knowledge with real-world experience to help others achieve
                     sustainable results. Every client's success story reminds me why I chose this path.
                   </p>
                 </div>
@@ -105,14 +105,14 @@ const AboutPage = () => {
               <div className="grid md:grid-cols-2 gap-6">
                 {[
                   {
-                    title: "NASM Certified Personal Trainer",
-                    description: "Advanced certification in exercise science and program design. This comprehensive certification covers anatomy, exercise physiology, biomechanics, and program design principles for safe and effective training.",
-                    icon: <Award className="h-6 w-6" />,
-                    gradient: "from-orange-400 to-red-400",
-                    year: "2020",
-                    certImage: "https://images.unsplash.com/photo-1434030216411-0b793f4b4173?w=300&h=200&fit=crop",
-                    fullCertImage: "https://images.unsplash.com/photo-1434030216411-0b793f4b4173?w=400&h=600&fit=crop"
-                  },
+  title: "IFSA Certified Fitness Coach",
+  description: "Certification by Intellectual Fitness & Sports Academy (IFSA). This certification validates knowledge in fitness coaching, exercise science, and training methodologies, ensuring competence in guiding clients toward safe and effective fitness goals.",
+  icon: <Award className="h-6 w-6" />,
+  gradient: "from-blue-400 to-indigo-400",
+  year: "2023",
+  certImage: "m5.jpg",
+  fullCertImage: "m5.jpg"
+},
                   {
                     title: "Precision Nutrition Coach",
                     description: "Evidence-based nutrition coaching and behavior change certification. Focuses on sustainable nutrition habits, client psychology, and personalized meal planning strategies for long-term success.",
@@ -152,26 +152,30 @@ const AboutPage = () => {
                   >
                     {/* Glow effect */}
                     <div className={`absolute inset-0 rounded-2xl bg-gradient-to-r ${cert.gradient} opacity-0 group-hover:opacity-20 blur-xl transition-opacity duration-300`}></div>
-                    
+
                     {/* Certificate Image */}
                     <div className="relative h-32 overflow-hidden">
-                      <img 
-                        src={cert.certImage} 
+                      <img
+                        src={cert.certImage}
                         alt={cert.title}
                         className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                        onError={(e) => {
+                          console.log('Image failed to load:', cert.certImage);
+                          e.target.src = 'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=300&h=200&fit=crop';
+                        }}
                       />
                       <div className="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition-colors duration-300"></div>
                       <div className="absolute top-3 right-3">
                         <span className="text-xs text-white bg-black/50 backdrop-blur-sm px-2 py-1 rounded-full">{cert.year}</span>
                       </div>
                     </div>
-                    
+
                     <div className="relative p-6">
                       {/* Icon */}
                       <div className={`inline-flex p-2 rounded-lg bg-gradient-to-r ${cert.gradient} bg-opacity-20 mb-3`}>
                         <div className="text-white">{cert.icon}</div>
                       </div>
-                      
+
                       {/* Content */}
                       <h4 className="text-lg font-bold text-white mb-2 group-hover:text-white transition-colors">
                         {cert.title}
@@ -195,9 +199,9 @@ const AboutPage = () => {
           >
             <h3 className="text-3xl font-bold text-white mb-6">My Mission</h3>
             <p className="text-xl text-gray-300 max-w-4xl mx-auto leading-relaxed">
-              To bridge the gap between scientific fitness knowledge and real-world application. 
-              I believe every person deserves a customized approach that fits their lifestyle, 
-              goals, and challenges. Together, we'll build not just physical strength, 
+              To bridge the gap between scientific fitness knowledge and real-world application.
+              I believe every person deserves a customized approach that fits their lifestyle,
+              goals, and challenges. Together, we'll build not just physical strength,
               but unshakeable confidence and lifelong healthy habits.
             </p>
           </motion.div>
@@ -217,7 +221,7 @@ const AboutPage = () => {
                 initial={{ scale: 0.8, opacity: 0 }}
                 animate={{ scale: 1, opacity: 1 }}
                 exit={{ scale: 0.8, opacity: 0 }}
-                className="bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-xl rounded-3xl border border-white/20 max-w-md w-full max-h-[90vh] overflow-hidden"
+                className="bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-xl rounded-3xl border border-white/20 max-w-2xl w-full max-h-[90vh] overflow-hidden"
                 onClick={(e) => e.stopPropagation()}
               >
                 {/* Close Button */}
@@ -230,15 +234,15 @@ const AboutPage = () => {
                   </button>
                 </div>
 
-                {/* Certificate Image - 9:16 ratio */}
-                <div className="aspect-[9/16] relative overflow-hidden">
+                {/* Certificate Image - Dynamic ratio */}
+                <div className="aspect-[4/3] relative overflow-hidden">
                   <img
                     src={selectedCert.fullCertImage}
                     alt={selectedCert.title}
                     className="w-full h-full object-cover"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
-                  
+
                   {/* Year Badge */}
                   <div className="absolute top-4 left-4">
                     <span className="bg-black/50 backdrop-blur-sm text-white px-3 py-1 rounded-full text-sm font-semibold">
@@ -252,11 +256,11 @@ const AboutPage = () => {
                   <div className={`inline-flex p-2 rounded-lg bg-gradient-to-r ${selectedCert.gradient} bg-opacity-20 mb-4`}>
                     <div className="text-white">{selectedCert.icon}</div>
                   </div>
-                  
+
                   <h3 className="text-xl font-bold text-white mb-3">
                     {selectedCert.title}
                   </h3>
-                  
+
                   <p className="text-gray-300 text-sm leading-relaxed">
                     {selectedCert.description}
                   </p>

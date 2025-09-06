@@ -26,15 +26,17 @@ const Footer = () => {
             </p>
             <div className="flex space-x-4">
               {[
-                { icon: <Instagram className="h-5 w-5" />, label: "Instagram" },
-                { icon: <Twitter className="h-5 w-5" />, label: "Twitter" },
-                { icon: <Youtube className="h-5 w-5" />, label: "YouTube" },
-                { icon: <Mail className="h-5 w-5" />, label: "Email" }
+                { icon: <Instagram className="h-5 w-5" />, label: "Instagram", link: "https://www.instagram.com/maxzlifts?igsh=MThhbXVncnd1anRuNQ%3D%3D&utm_source=qr" },
+                { icon: <Twitter className="h-5 w-5" />, label: "Twitter", link: null },
+                { icon: <Youtube className="h-5 w-5" />, label: "YouTube", link: null },
+                { icon: <Mail className="h-5 w-5" />, label: "Email", link: null }
               ].map((social, index) => (
                 <motion.a
                   key={index}
-                  href="#"
-                  onClick={handleSocialClick}
+                  href={social.link || "#"}
+                  onClick={social.link ? undefined : handleSocialClick}
+                  target={social.link ? "_blank" : undefined}
+                  rel={social.link ? "noopener noreferrer" : undefined}
                   className="text-muted-foreground hover:text-primary transition-colors"
                   whileHover={{ scale: 1.1 }}
                   whileTap={{ scale: 0.95 }}
