@@ -42,10 +42,10 @@ const HomePage = () => {
       {/* Hero Section */}
       <section className="min-h-screen flex items-center justify-center relative px-4">
         {/* Background Image with Dark Overlay */}
-        <div 
+        <div
           className="absolute inset-0 bg-cover bg-center bg-no-repeat"
           style={{
-            backgroundImage: 'url(https://i.pinimg.com/originals/7e/79/cf/7e79cf22847356c20b64aabe21d8ee3c.jpg)'
+            backgroundImage: 'url(https://mdtabish24.github.io/Gym-trainer-website/m3.jpg)'
           }}
         >
           <div className="absolute inset-0 bg-black/70"></div>
@@ -65,7 +65,7 @@ const HomePage = () => {
               <br />
               Transform Your Life
             </motion.h1>
-            
+
             <motion.p
               variants={fadeIn('up', 0.4)}
               className="text-xl md:text-2xl text-muted-foreground max-w-3xl mx-auto"
@@ -109,7 +109,7 @@ const HomePage = () => {
             />
           ))}
         </div>
-        
+
         <div className="max-w-7xl mx-auto relative z-10">
           <motion.div
             initial="hidden"
@@ -134,13 +134,13 @@ const HomePage = () => {
             >
               <div className="relative bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-xl rounded-3xl p-8 border border-white/20">
                 <h3 className="text-2xl font-bold text-white mb-6 text-center">Real Transformations</h3>
-                
+
                 {/* Before/After Slider */}
                 <div className="relative h-80 rounded-2xl overflow-hidden mb-6 group cursor-grab active:cursor-grabbing select-none">
                   {/* Before Image */}
                   <div className="absolute inset-0">
-                    <img 
-                      src="https://mdtabish24.github.io/Gym-trainer-website/beforeimg.jpg" 
+                    <img
+                      src="https://mdtabish24.github.io/Gym-trainer-website/beforeimg.jpg"
                       alt="Before transformation"
                       className="w-full h-full object-cover"
                     />
@@ -148,15 +148,15 @@ const HomePage = () => {
                       <span className="text-white text-sm font-semibold">BEFORE</span>
                     </div>
                   </div>
-                  
+
                   {/* After Image with slider */}
-                  <div 
+                  <div
                     className="absolute inset-0"
                     style={{ clipPath: 'inset(0 50% 0 0)' }}
                     id="afterImage"
                   >
-                    <img 
-                      src="https://mdtabish24.github.io/Gym-trainer-website/afterimg.jpg" 
+                    <img
+                      src="https://mdtabish24.github.io/Gym-trainer-website/afterimg.jpg"
                       alt="After transformation"
                       className="w-full h-full object-cover"
                     />
@@ -164,64 +164,64 @@ const HomePage = () => {
                       <span className="text-white text-sm font-semibold">AFTER</span>
                     </div>
                   </div>
-                  
+
                   {/* Interactive Overlay */}
-                  <div 
+                  <div
                     className="absolute inset-0 z-10"
                     onMouseDown={(e) => {
                       const container = e.currentTarget.parentElement;
                       const afterImg = container.querySelector('#afterImage');
                       const rect = container.getBoundingClientRect();
-                      
+
                       const updateSlider = (clientX) => {
                         const x = Math.max(0, Math.min(100, ((clientX - rect.left) / rect.width) * 100));
                         afterImg.style.clipPath = `inset(0 ${100-x}% 0 0)`;
                       };
-                      
+
                       const handleMouseMove = (e) => updateSlider(e.clientX);
                       const handleTouchMove = (e) => updateSlider(e.touches[0].clientX);
-                      
+
                       const cleanup = () => {
                         document.removeEventListener('mousemove', handleMouseMove);
                         document.removeEventListener('mouseup', cleanup);
                         document.removeEventListener('touchmove', handleTouchMove);
                         document.removeEventListener('touchend', cleanup);
                       };
-                      
+
                       document.addEventListener('mousemove', handleMouseMove);
                       document.addEventListener('mouseup', cleanup);
                       document.addEventListener('touchmove', handleTouchMove);
                       document.addEventListener('touchend', cleanup);
-                      
+
                       updateSlider(e.clientX);
                     }}
                     onTouchStart={(e) => {
                       const container = e.currentTarget.parentElement;
                       const afterImg = container.querySelector('#afterImage');
                       const rect = container.getBoundingClientRect();
-                      
+
                       const updateSlider = (clientX) => {
                         const x = Math.max(0, Math.min(100, ((clientX - rect.left) / rect.width) * 100));
                         afterImg.style.clipPath = `inset(0 ${100-x}% 0 0)`;
                       };
-                      
+
                       updateSlider(e.touches[0].clientX);
                     }}
                   >
                   </div>
-                  
+
                   {/* Slider Handle */}
                   <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-1 h-full bg-white/80 pointer-events-none z-20">
                     <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-8 h-8 bg-white rounded-full shadow-lg flex items-center justify-center">
                       <div className="w-4 h-4 border-2 border-gray-400 rounded-full"></div>
                     </div>
                   </div>
-                  
+
                   <div className="absolute top-4 right-4 bg-black/50 backdrop-blur-sm rounded-full px-3 py-1 z-20">
                     <span className="text-white text-sm">Drag to compare</span>
                   </div>
                 </div>
-                
+
                 {/* Stats Badges */}
                 <div className="grid grid-cols-3 gap-4">
                   {[
@@ -279,7 +279,7 @@ const HomePage = () => {
                 <motion.div
                   key={index}
                   variants={fadeIn('up', feature.delay)}
-                  whileHover={{ 
+                  whileHover={{
                     scale: 1.05,
                     rotateX: 5,
                     rotateY: 5,
@@ -290,17 +290,17 @@ const HomePage = () => {
                 >
                   {/* Neon glow effect */}
                   <div className={`absolute inset-0 rounded-2xl bg-gradient-to-r ${feature.gradient} opacity-0 group-hover:opacity-30 blur-xl transition-all duration-500`}></div>
-                  
+
                   {/* Icon with glow */}
                   <div className={`relative mb-4 w-12 h-12 rounded-xl bg-gradient-to-r ${feature.gradient} p-0.5 group-hover:shadow-lg group-hover:shadow-current transition-all duration-500`}>
                     <div className="w-full h-full rounded-xl bg-black/80 flex items-center justify-center text-white group-hover:text-white transition-colors">
                       {feature.icon}
                     </div>
                   </div>
-                  
+
                   <h3 className="text-lg font-bold text-white mb-2 group-hover:text-white transition-colors">{feature.title}</h3>
                   <p className="text-gray-400 text-sm group-hover:text-gray-300 transition-colors">{feature.description}</p>
-                  
+
                   {/* 3D depth effect */}
                   <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                 </motion.div>

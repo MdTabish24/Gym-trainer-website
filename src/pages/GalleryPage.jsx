@@ -21,40 +21,28 @@ const GalleryPage = () => {
     },
     {
       id: 3,
-      src: "https://images.unsplash.com/photo-1594736797933-d0501ba2fe65?w=800&h=600&fit=crop",
+      src: "https://mdtabish24.github.io/Gym-trainer-website/g2.jpg",
       title: "Power Lifting",
       category: "Training"
     },
     {
       id: 4,
-      src: "https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?w=800&h=600&fit=crop",
+      src: "https://mdtabish24.github.io/Gym-trainer-website/g4.jpg",
       title: "Muscle Definition",
       category: "Physique"
     },
     {
       id: 5,
-      src: "https://images.unsplash.com/photo-1605296867304-46d5465a13f1?w=800&h=600&fit=crop",
+      src: "https://mdtabish24.github.io/Gym-trainer-website/g3.jpg",
       title: "Cardio Session",
       category: "Training"
     },
     {
       id: 6,
-      src: "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=800&h=600&fit=crop",
+      src: "https://mdtabish24.github.io/Gym-trainer-website/g5.jpg",
       title: "Peak Condition",
       category: "Physique"
     },
-    {
-      id: 7,
-      src: "https://images.unsplash.com/photo-1566753323558-f4e0952af115?w=800&h=600&fit=crop",
-      title: "Strength Training",
-      category: "Training"
-    },
-    {
-      id: 8,
-      src: "https://images.unsplash.com/photo-1581009146145-b5ef050c2e1e?w=800&h=600&fit=crop",
-      title: "Aesthetic Goals",
-      category: "Physique"
-    }
   ];
 
   return (

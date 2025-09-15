@@ -9,37 +9,37 @@ const TransformationsPage = () => {
 
   const timelineItems = [
     {
-      image: "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=500&h=500&fit=crop",
-      name: "Sarah M.",
+      image: "https://mdtabish24.github.io/Gym-trainer-website/m6.jpg",
+      name: "",
       type: "before",
       side: "left"
     },
     {
-      image: "https://images.unsplash.com/photo-1583454110551-21f2fa2afe61?w=500&h=500&fit=crop",
-      result: "Lost 15kg in 3 months",
+      image: "https://mdtabish24.github.io/Gym-trainer-website/beforeimg.jpg",
+      result: "",
+      type: "before",
+      side: "right"
+    },
+    {
+      image: "https://mdtabish24.github.io/Gym-trainer-website/g3.jpg",
+      name: "",
+      type: "after",
+      side: "left"
+    },
+    {
+      image: "https://mdtabish24.github.io/Gym-trainer-website/g5.jpg",
+      result: "",
       type: "after",
       side: "right"
     },
     {
-      image: "https://images.unsplash.com/photo-1594736797933-d0501ba2fe65?w=500&h=500&fit=crop",
-      name: "Ahmed K.",
+      image: "https://mdtabish24.github.io/Gym-trainer-website/afterimg.jpg",
+      name: "",
       type: "before",
       side: "left"
     },
     {
-      image: "https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?w=500&h=500&fit=crop",
-      result: "Gained 8kg muscle mass",
-      type: "after",
-      side: "right"
-    },
-    {
-      image: "https://images.unsplash.com/photo-1566753323558-f4e0952af115?w=500&h=500&fit=crop",
-      name: "Maria L.",
-      type: "before",
-      side: "left"
-    },
-    {
-      image: "https://images.unsplash.com/photo-1605296867304-46d5465a13f1?w=500&h=500&fit=crop",
+      image: "https://mdtabish24.github.io/Gym-trainer-website/m3.jpg",
       result: "Complete body transformation",
       type: "after",
       side: "right"
@@ -79,7 +79,7 @@ const TransformationsPage = () => {
         <div className="max-w-4xl mx-auto relative">
           {/* Central Timeline Line */}
           <div className="absolute left-1/2 transform -translate-x-1/2 w-1 h-full bg-gray-600">
-            <div 
+            <div
               className="w-full bg-gradient-to-b from-orange-500 to-green-500 transition-all duration-300"
               style={{ height: `${scrollProgress * 100}%` }}
             />
@@ -89,9 +89,9 @@ const TransformationsPage = () => {
           <div className="space-y-16">
             {timelineItems.map((item, index) => {
               const itemProgress = Math.max(0, Math.min(1, (scrollProgress * timelineItems.length) - index));
-              
+
               return (
-                <motion.div 
+                <motion.div
                   key={index}
                   className="flex items-center relative"
                   style={{
