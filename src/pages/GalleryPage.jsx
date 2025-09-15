@@ -5,17 +5,17 @@ import { motion } from 'framer-motion';
 
 const GalleryPage = () => {
   const [mainImage, setMainImage] = useState(0);
-  
+
   const galleryImages = [
     {
       id: 1,
-      src: "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=800&h=600&fit=crop",
+      src: "https://mdtabish24.github.io/Gym-trainer-website/afterimg.jpg",
       title: "Beast Mode Training",
       category: "Training"
     },
     {
       id: 2,
-      src: "https://images.unsplash.com/photo-1583454110551-21f2fa2afe61?w=800&h=600&fit=crop",
+      src: "https://mdtabish24.github.io/Gym-trainer-website/m3.jpg",
       title: "Shredded Physique",
       category: "Physique"
     },
@@ -100,7 +100,7 @@ const GalleryPage = () => {
                       alt={image.title}
                       className="w-full h-32 object-cover"
                     />
-                    
+
                     {/* Active Indicator */}
                     {index === mainImage && (
                       <div className="absolute inset-0 bg-gradient-to-r from-orange-500/30 to-red-500/30" />
