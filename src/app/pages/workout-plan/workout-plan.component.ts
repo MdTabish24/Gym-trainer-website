@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 
 interface WorkoutExercise {
@@ -30,6 +30,8 @@ type GoalType = 'muscle' | 'fat-loss' | 'strength' | 'endurance';
   templateUrl: './workout-plan.component.html',
 })
 export class WorkoutPlanComponent {
+  private readonly formBuilder = inject(FormBuilder);
+
   readonly workoutForm = this.formBuilder.nonNullable.group({
     goal: ['', Validators.required],
     experience: ['', Validators.required],
@@ -50,8 +52,6 @@ export class WorkoutPlanComponent {
   plan: WorkoutPlanSummary | null = null;
   statusTone: 'success' | 'error' | 'info' = 'info';
   statusMessage = 'Generate a simplified Angular workout preview from the form below.';
-
-  constructor(private readonly formBuilder: FormBuilder) {}
 
   submit(): void {
     if (this.workoutForm.invalid) {
@@ -89,7 +89,7 @@ export class WorkoutPlanComponent {
       endurance: '60s',
     };
 
-    const basePool = exercisePools[equipment] || exercisePools.bodyweight;
+    const basePool = exercisePools[equipment] || exercisePools['bodyweight'];
     const exercisesPerDay = sessionMinutes >= 60 ? 5 : sessionMinutes >= 45 ? 4 : 3;
 
     const daysPlan: WorkoutDay[] = Array.from({ length: days }, (_, index) => {

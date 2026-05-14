@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 
 interface DietScheduleItem {
@@ -29,6 +29,8 @@ type GoalType = 'muscle' | 'fat-loss' | 'maintain' | 'stamina' | 'sports';
   templateUrl: './diet-plan.component.html',
 })
 export class DietPlanComponent {
+  private readonly formBuilder = inject(FormBuilder);
+
   readonly goalLabels: Record<GoalType, string> = {
     muscle: 'Muscle Building',
     'fat-loss': 'Fat Loss',
@@ -68,8 +70,6 @@ export class DietPlanComponent {
   plan: DietPlanSummary | null = null;
   statusTone: 'success' | 'error' | 'info' = 'info';
   statusMessage = 'Fill the form and generate a simplified Angular diet plan preview.';
-
-  constructor(private readonly formBuilder: FormBuilder) {}
 
   submit(): void {
     if (this.dietForm.invalid) {

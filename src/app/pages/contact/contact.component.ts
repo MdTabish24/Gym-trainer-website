@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 
 @Component({
@@ -9,6 +9,8 @@ import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
   templateUrl: './contact.component.html',
 })
 export class ContactComponent {
+  private readonly formBuilder = inject(FormBuilder);
+
   readonly goals = [
     { label: 'Muscle Building', value: 'muscle' },
     { label: 'Fat Loss', value: 'fat-loss' },
@@ -28,8 +30,6 @@ export class ContactComponent {
 
   statusTone: 'success' | 'error' | 'info' = 'info';
   statusMessage = 'Send your details and the Angular contact page will open WhatsApp with a prefilled message.';
-
-  constructor(private readonly formBuilder: FormBuilder) {}
 
   submit(): void {
     if (this.contactForm.invalid) {
