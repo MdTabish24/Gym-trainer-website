@@ -1,0 +1,38 @@
+<section class="page-section">
+  <div class="container-wide space-y-12">
+    <div class="space-y-4 text-center">
+      <p class="section-kicker">Gallery</p>
+      <h1 class="section-title">A visual library of training, conditioning, and physique moments.</h1>
+      <p class="section-copy mx-auto max-w-3xl">
+        The gallery page now sits inside Angular routing and uses component state for image selection through a cleaner Angular setup.
+      </p>
+    </div>
+
+    <div class="grid gap-6 lg:grid-cols-[0.34fr_0.66fr]">
+      <div class="grid gap-4">
+        @for (image of images; track image.id; let index = $index) {
+          <button
+            type="button"
+            class="media-frame overflow-hidden transition duration-200"
+            [class.ring-2]="index === activeIndex"
+            [class.ring-primary]="index === activeIndex"
+            (click)="selectImage(index)"
+          >
+            <img [src]="image.src" [alt]="image.title" class="h-28 w-full object-cover" />
+          </button>
+        }
+      </div>
+
+      <div class="panel space-y-6">
+        <div class="media-frame h-[520px]">
+          <img [src]="images[activeIndex].src" [alt]="images[activeIndex].title" class="h-full w-full object-cover" />
+        </div>
+        <div class="space-y-3">
+          <p class="section-kicker">{{ images[activeIndex].category }}</p>
+          <h2 class="text-3xl font-bold">{{ images[activeIndex].title }}</h2>
+          <p class="text-sm leading-7 text-muted-foreground">{{ images[activeIndex].caption }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

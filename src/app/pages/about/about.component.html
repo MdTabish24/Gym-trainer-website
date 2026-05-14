@@ -1,0 +1,95 @@
+<section class="page-section">
+  <div class="container-wide space-y-12">
+    <div class="space-y-4 text-center">
+      <p class="section-kicker">About the Coach</p>
+      <h1 class="section-title">Meet Maaz Momin</h1>
+      <p class="section-copy mx-auto max-w-3xl">
+        A transformation-focused coach blending science-backed training, habit systems, and direct accountability for clients who want visible
+        results.
+      </p>
+    </div>
+
+    <div class="grid gap-8 lg:grid-cols-[0.85fr_1.15fr]">
+      <div class="panel sticky top-28 space-y-6 self-start">
+        <div class="media-frame mx-auto h-48 w-48 overflow-hidden rounded-full">
+          <img src="/media/m6.jpg" alt="Maaz Momin" class="h-full w-full object-cover" />
+        </div>
+        <div class="text-center">
+          <h2 class="text-2xl font-bold">Maaz Momin</h2>
+          <p class="mt-2 text-sm font-semibold uppercase tracking-[0.25em] text-primary">Certified fitness expert</p>
+        </div>
+
+        <div class="grid gap-4 sm:grid-cols-2">
+          <div class="panel-soft text-center">
+            <p class="text-3xl font-bold">4+</p>
+            <p class="mt-2 text-sm text-muted-foreground">Years of experience</p>
+          </div>
+          <div class="panel-soft text-center">
+            <p class="text-3xl font-bold">95%</p>
+            <p class="mt-2 text-sm text-muted-foreground">Success rate</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="space-y-8">
+        <div class="panel">
+          <p class="section-kicker">Story</p>
+          <h2 class="mt-3 text-3xl font-bold">A personal transformation turned into a coaching system.</h2>
+          <div class="mt-5 space-y-4 text-sm leading-8 text-muted-foreground">
+            <p>
+              The coaching approach started from lived experience: getting leaner, stronger, and more disciplined through structured training and
+              nutrition.
+            </p>
+            <p>
+              Today the focus is on repeatable systems, not random motivation. Every client plan is built to survive real schedules, stress, and
+              day-to-day inconsistency.
+            </p>
+          </div>
+        </div>
+
+        <div class="grid gap-6 md:grid-cols-2">
+          @for (certification of certifications; track certification.title) {
+            <button
+              type="button"
+              class="panel-soft text-left transition duration-200 hover:-translate-y-1 hover:border-primary/40"
+              (click)="openCertification(certification)"
+            >
+              <div class="media-frame mb-5 h-36">
+                <img [src]="certification.image" [alt]="certification.title" class="h-full w-full object-cover" />
+              </div>
+              <p class="section-kicker">{{ certification.year }}</p>
+              <h3 class="mt-3 text-xl font-bold">{{ certification.title }}</h3>
+              <p class="mt-2 text-sm text-primary">{{ certification.issuer }}</p>
+              <p class="mt-3 text-sm leading-7 text-muted-foreground">{{ certification.description }}</p>
+            </button>
+          }
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+@if (selectedCertification; as certification) {
+  <div class="fixed inset-0 z-[60] flex items-center justify-center bg-black/75 px-4 backdrop-blur-sm" (click)="closeCertification()">
+    <div class="panel max-w-2xl" (click)="$event.stopPropagation()">
+      <div class="flex items-start justify-between gap-4">
+        <div>
+          <p class="section-kicker">{{ certification.year }}</p>
+          <h2 class="mt-3 text-3xl font-bold">{{ certification.title }}</h2>
+          <p class="mt-2 text-sm text-primary">{{ certification.issuer }}</p>
+        </div>
+        <button
+          type="button"
+          class="inline-flex h-10 w-10 items-center justify-center rounded-full border border-white/10 bg-white/5 text-lg"
+          (click)="closeCertification()"
+        >
+          x
+        </button>
+      </div>
+      <div class="media-frame mt-6 h-72">
+        <img [src]="certification.image" [alt]="certification.title" class="h-full w-full object-cover" />
+      </div>
+      <p class="mt-6 text-sm leading-8 text-muted-foreground">{{ certification.description }}</p>
+    </div>
+  </div>
+}

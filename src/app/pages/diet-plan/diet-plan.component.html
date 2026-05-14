@@ -1,0 +1,161 @@
+<section class="page-section">
+  <div class="container-wide space-y-12">
+    <div class="space-y-4 text-center">
+      <p class="section-kicker">Diet Plan</p>
+      <h1 class="section-title">A simplified Angular nutrition planner for the project showcase.</h1>
+      <p class="section-copy mx-auto max-w-3xl">
+        This route keeps the generator feel of the original site while presenting the logic in a cleaner Angular component structure.
+      </p>
+    </div>
+
+    <div class="grid gap-8 xl:grid-cols-[0.95fr_1.05fr]">
+      <form [formGroup]="dietForm" class="panel space-y-5" (ngSubmit)="submit()">
+        <div class="grid gap-4 sm:grid-cols-2">
+          <div class="space-y-2">
+            <label class="text-sm font-semibold">Goal</label>
+            <select class="field" formControlName="goal">
+              <option value="">Select goal</option>
+              @for (entry of goalLabels | keyvalue; track entry.key) {
+                <option [value]="entry.key">{{ entry.value }}</option>
+              }
+            </select>
+          </div>
+          <div class="space-y-2">
+            <label class="text-sm font-semibold">Diet Type</label>
+            <select class="field" formControlName="dietType">
+              <option value="">Select diet type</option>
+              @for (type of dietTypes; track type.value) {
+                <option [value]="type.value">{{ type.label }}</option>
+              }
+            </select>
+          </div>
+        </div>
+
+        <div class="grid gap-4 sm:grid-cols-3">
+          <div class="space-y-2">
+            <label class="text-sm font-semibold">Weight</label>
+            <input type="number" class="field" formControlName="weight" placeholder="70" />
+          </div>
+          <div class="space-y-2">
+            <label class="text-sm font-semibold">Height</label>
+            <input type="number" class="field" formControlName="height" placeholder="175" />
+          </div>
+          <div class="space-y-2">
+            <label class="text-sm font-semibold">Age</label>
+            <input type="number" class="field" formControlName="age" placeholder="25" />
+          </div>
+        </div>
+
+        <div class="grid gap-4 sm:grid-cols-2">
+          <div class="space-y-2">
+            <label class="text-sm font-semibold">Gender</label>
+            <select class="field" formControlName="gender">
+              <option value="">Select gender</option>
+              <option value="male">Male</option>
+              <option value="female">Female</option>
+            </select>
+          </div>
+          <div class="space-y-2">
+            <label class="text-sm font-semibold">Activity Level</label>
+            <select class="field" formControlName="activityLevel">
+              <option value="">Select activity</option>
+              @for (activity of activityLevels; track activity.value) {
+                <option [value]="activity.value">{{ activity.label }}</option>
+              }
+            </select>
+          </div>
+        </div>
+
+        <div class="grid gap-4 sm:grid-cols-2">
+          <div class="space-y-2">
+            <label class="text-sm font-semibold">Breakfast</label>
+            <input type="time" class="field" formControlName="breakfastTime" />
+          </div>
+          <div class="space-y-2">
+            <label class="text-sm font-semibold">Lunch</label>
+            <input type="time" class="field" formControlName="lunchTime" />
+          </div>
+        </div>
+
+        <div class="grid gap-4 sm:grid-cols-2">
+          <div class="space-y-2">
+            <label class="text-sm font-semibold">Dinner</label>
+            <input type="time" class="field" formControlName="dinnerTime" />
+          </div>
+          <div class="space-y-2">
+            <label class="text-sm font-semibold">Snack Times</label>
+            <input type="text" class="field" formControlName="snackTimes" placeholder="11:00, 16:00" />
+          </div>
+        </div>
+
+        <div
+          class="status-banner"
+          [class.status-success]="statusTone === 'success'"
+          [class.status-error]="statusTone === 'error'"
+          [class.status-info]="statusTone === 'info'"
+        >
+          {{ statusMessage }}
+        </div>
+
+        <button type="submit" class="btn-primary w-full justify-center">Generate Diet Plan</button>
+      </form>
+
+      <div class="panel space-y-6">
+        <div>
+          <p class="section-kicker">Plan Preview</p>
+          <h2 class="mt-3 text-3xl font-bold">Daily target summary</h2>
+        </div>
+
+        @if (plan) {
+          <div class="grid gap-4 sm:grid-cols-2">
+            <div class="panel-soft">
+              <p class="text-sm text-muted-foreground">Goal</p>
+              <p class="mt-2 text-2xl font-bold">{{ plan.goalLabel }}</p>
+            </div>
+            <div class="panel-soft">
+              <p class="text-sm text-muted-foreground">BMI</p>
+              <p class="mt-2 text-2xl font-bold">{{ plan.bmi }}</p>
+            </div>
+            <div class="panel-soft">
+              <p class="text-sm text-muted-foreground">Calories</p>
+              <p class="mt-2 text-2xl font-bold">{{ plan.calories }}</p>
+            </div>
+            <div class="panel-soft">
+              <p class="text-sm text-muted-foreground">Protein / Carbs / Fats</p>
+              <p class="mt-2 text-lg font-bold">{{ plan.protein }}g / {{ plan.carbs }}g / {{ plan.fats }}g</p>
+            </div>
+          </div>
+
+          <div class="space-y-3">
+            @for (item of plan.schedule; track item.time + item.title) {
+              <div class="panel-soft">
+                <div class="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
+                  <div>
+                    <p class="text-sm font-semibold">{{ item.title }}</p>
+                    <p class="mt-2 text-sm leading-7 text-muted-foreground">{{ item.foods.join(' • ') }}</p>
+                  </div>
+                  <span class="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs font-semibold uppercase tracking-[0.25em]">
+                    {{ item.time }}
+                  </span>
+                </div>
+              </div>
+            }
+          </div>
+
+          <div class="panel-soft">
+            <p class="text-sm font-semibold">Notes</p>
+            <div class="mt-3 grid gap-2">
+              @for (note of plan.notes; track note) {
+                <p class="text-sm text-muted-foreground">{{ note }}</p>
+              }
+            </div>
+          </div>
+        } @else {
+          <div class="panel-soft text-sm leading-7 text-muted-foreground">
+            Generate the form once and this column becomes your Angular diet-plan preview card.
+          </div>
+        }
+      </div>
+    </div>
+  </div>
+</section>

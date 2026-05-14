@@ -1,0 +1,55 @@
+<footer class="border-t border-white/10 bg-black/20 px-4 py-12">
+  <div class="container-wide grid gap-10 md:grid-cols-3">
+    <div class="space-y-4">
+      <h3 class="text-2xl font-bold">{{ siteName }}</h3>
+      <p class="max-w-sm text-sm leading-7 text-muted-foreground">
+        Angular conversion of the Maaz Momin fitness site with coaching pages, plan generators, and transformation storytelling.
+      </p>
+      <div class="flex flex-wrap gap-3">
+        @for (social of socials; track social.label) {
+          @if (social.href.startsWith('/')) {
+            <a
+              [routerLink]="social.href"
+              class="inline-flex h-11 w-11 items-center justify-center rounded-full border border-white/10 bg-white/5 text-xs font-bold tracking-[0.2em] text-foreground transition hover:border-primary/40 hover:text-primary"
+            >
+              {{ social.short }}
+            </a>
+          } @else {
+            <a
+              [href]="social.href"
+              target="_blank"
+              rel="noreferrer"
+              class="inline-flex h-11 w-11 items-center justify-center rounded-full border border-white/10 bg-white/5 text-xs font-bold tracking-[0.2em] text-foreground transition hover:border-primary/40 hover:text-primary"
+            >
+              {{ social.short }}
+            </a>
+          }
+        }
+      </div>
+    </div>
+
+    <div class="space-y-4">
+      <h4 class="text-lg font-bold">Quick Links</h4>
+      <div class="grid gap-2">
+        @for (item of quickLinks; track item.path) {
+          <a [routerLink]="item.path" class="text-sm text-muted-foreground transition hover:text-primary">
+            {{ item.label }}
+          </a>
+        }
+      </div>
+    </div>
+
+    <div class="space-y-4">
+      <h4 class="text-lg font-bold">Services</h4>
+      <div class="grid gap-2">
+        @for (service of services; track service) {
+          <span class="text-sm text-muted-foreground">{{ service }}</span>
+        }
+      </div>
+    </div>
+  </div>
+
+  <div class="container-wide mt-10 border-t border-white/10 pt-6 text-sm text-muted-foreground">
+    <p>2026 Angular presentation build for Maaz Momin.</p>
+  </div>
+</footer>

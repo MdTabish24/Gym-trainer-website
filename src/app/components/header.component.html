@@ -1,0 +1,59 @@
+<header
+  class="fixed inset-x-0 top-0 z-50 border-b border-white/10 bg-background/80 backdrop-blur-xl transition duration-300"
+  [class.-translate-y-full]="isHidden"
+>
+  <div class="container-wide flex items-center justify-between px-4 py-4">
+    <a routerLink="/" class="flex items-center gap-3" (click)="closeMenu()">
+      <span class="inline-flex h-11 w-11 items-center justify-center rounded-full bg-primary text-sm font-bold text-primary-foreground">
+        MM
+      </span>
+      <span class="text-lg font-bold tracking-[0.2em] text-foreground">{{ siteName }}</span>
+    </a>
+
+    <nav class="hidden items-center gap-7 md:flex">
+      @for (item of navItems; track item.path) {
+        <a
+          [routerLink]="item.path"
+          routerLinkActive="text-primary"
+          [routerLinkActiveOptions]="item.path === '/' ? { exact: true } : { exact: false }"
+          class="text-sm font-semibold text-muted-foreground transition hover:text-primary"
+        >
+          {{ item.label }}
+        </a>
+      }
+    </nav>
+
+    <button
+      type="button"
+      class="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-2 text-sm font-semibold md:hidden"
+      (click)="toggleMenu()"
+      [attr.aria-expanded]="isMenuOpen"
+      aria-label="Toggle menu"
+    >
+      <span>{{ isMenuOpen ? 'Close' : 'Menu' }}</span>
+      <span class="relative flex h-4 w-4 flex-col justify-center gap-[3px]">
+        <span class="block h-[2px] w-full rounded-full bg-foreground"></span>
+        <span class="block h-[2px] w-full rounded-full bg-foreground"></span>
+        <span class="block h-[2px] w-full rounded-full bg-foreground"></span>
+      </span>
+    </button>
+  </div>
+
+  @if (isMenuOpen) {
+    <nav class="border-t border-white/10 bg-background/95 px-4 py-4 md:hidden">
+      <div class="container-wide flex flex-col gap-3">
+        @for (item of navItems; track item.path) {
+          <a
+            [routerLink]="item.path"
+            routerLinkActive="text-primary"
+            [routerLinkActiveOptions]="item.path === '/' ? { exact: true } : { exact: false }"
+            class="rounded-2xl border border-transparent px-4 py-3 text-sm font-semibold text-muted-foreground transition hover:border-white/10 hover:bg-white/5 hover:text-primary"
+            (click)="closeMenu()"
+          >
+            {{ item.label }}
+          </a>
+        }
+      </div>
+    </nav>
+  }
+</header>

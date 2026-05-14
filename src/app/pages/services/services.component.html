@@ -1,0 +1,37 @@
+<section class="page-section">
+  <div class="container-wide space-y-12">
+    <div class="space-y-4 text-center">
+      <p class="section-kicker">Services</p>
+      <h1 class="section-title">Choose the roadmap that matches your goal and schedule.</h1>
+      <p class="section-copy mx-auto max-w-3xl">
+        Each offer is framed as an Angular route page so the whole project now reads like a proper Angular application from top to bottom.
+      </p>
+    </div>
+
+    <div class="grid gap-6 md:grid-cols-2">
+      @for (service of services; track service.name) {
+        <div class="panel-soft flex h-full flex-col">
+          <p class="section-kicker">Program</p>
+          <h2 class="mt-3 text-2xl font-bold">{{ service.name }}</h2>
+          <p class="mt-4 text-sm leading-7 text-muted-foreground">{{ service.description }}</p>
+          <p class="mt-6 text-2xl font-bold text-primary">{{ service.price }}</p>
+          <div class="mt-6 grid gap-2">
+            @for (feature of service.features; track feature) {
+              <div class="rounded-2xl border border-white/10 bg-white/5 px-4 py-3 text-sm text-muted-foreground">{{ feature }}</div>
+            }
+          </div>
+          <a routerLink="/contact" class="btn-primary mt-8">Get Started</a>
+        </div>
+      }
+    </div>
+
+    <div class="panel text-center">
+      <p class="section-kicker">Need Help Choosing</p>
+      <h2 class="mt-3 text-3xl font-bold">Book a consultation and narrow the plan down fast.</h2>
+      <p class="mx-auto mt-4 max-w-2xl text-sm leading-7 text-muted-foreground">
+        The site may not need deployment right now, but the service architecture is now clearly presented inside Angular pages and routes.
+      </p>
+      <a routerLink="/contact" class="btn-primary mt-8">Book a Free Consultation</a>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,132 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: 224 16% 6%;
+  --foreground: 210 20% 98%;
+  --card: 224 16% 9%;
+  --card-foreground: 210 20% 98%;
+  --popover: 224 16% 9%;
+  --popover-foreground: 210 20% 98%;
+  --primary: 35 92% 56%;
+  --primary-foreground: 222 47% 11%;
+  --secondary: 224 14% 16%;
+  --secondary-foreground: 210 20% 98%;
+  --muted: 224 12% 18%;
+  --muted-foreground: 215 15% 70%;
+  --accent: 16 92% 54%;
+  --accent-foreground: 210 20% 98%;
+  --destructive: 0 84% 60%;
+  --destructive-foreground: 210 20% 98%;
+  --border: 224 15% 20%;
+  --input: 224 15% 20%;
+  --ring: 35 92% 56%;
+  --radius: 1rem;
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply min-h-screen bg-background text-foreground antialiased;
+    font-family: 'DM Sans', sans-serif;
+    background-image:
+      radial-gradient(circle at top left, rgba(249, 115, 22, 0.18), transparent 28%),
+      radial-gradient(circle at bottom right, rgba(234, 179, 8, 0.1), transparent 24%),
+      linear-gradient(180deg, rgba(11, 11, 13, 1), rgba(10, 10, 12, 0.95));
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: 'Space Grotesk', sans-serif;
+  }
+}
+
+@layer components {
+  .page-section {
+    @apply px-4 py-16 md:px-6 md:py-24;
+  }
+
+  .container-wide {
+    @apply mx-auto w-full max-w-6xl;
+  }
+
+  .section-kicker {
+    @apply text-xs font-bold uppercase tracking-[0.35em] text-primary/80;
+  }
+
+  .section-title {
+    @apply text-4xl font-bold tracking-tight md:text-6xl;
+  }
+
+  .section-copy {
+    @apply text-base leading-7 text-muted-foreground md:text-lg;
+  }
+
+  .panel {
+    @apply rounded-[28px] border border-white/10 bg-white/5 p-6 shadow-2xl shadow-black/20 backdrop-blur-xl;
+  }
+
+  .panel-soft {
+    @apply rounded-[24px] border border-white/10 bg-card/80 p-6 shadow-xl shadow-black/10;
+  }
+
+  .btn-primary {
+    @apply inline-flex items-center justify-center rounded-full bg-primary px-6 py-3 text-sm font-semibold text-primary-foreground transition duration-200 hover:scale-[1.02] hover:bg-primary/90;
+  }
+
+  .btn-secondary {
+    @apply inline-flex items-center justify-center rounded-full border border-white/15 bg-white/5 px-6 py-3 text-sm font-semibold text-foreground transition duration-200 hover:border-primary/40 hover:bg-white/10;
+  }
+
+  .field {
+    @apply w-full rounded-2xl border border-white/10 bg-black/25 px-4 py-3 text-sm text-foreground outline-none transition placeholder:text-muted-foreground focus:border-primary/60 focus:ring-2 focus:ring-primary/30;
+  }
+
+  .status-banner {
+    @apply rounded-2xl border px-4 py-3 text-sm;
+  }
+
+  .status-success {
+    @apply border-emerald-400/25 bg-emerald-500/10 text-emerald-100;
+  }
+
+  .status-error {
+    @apply border-red-400/25 bg-red-500/10 text-red-100;
+  }
+
+  .status-info {
+    @apply border-primary/25 bg-primary/10 text-amber-50;
+  }
+
+  .media-frame {
+    @apply overflow-hidden rounded-[28px] border border-white/10 bg-black/20 shadow-2xl shadow-black/20;
+  }
+
+  .table-shell {
+    @apply overflow-hidden rounded-3xl border border-white/10 bg-white/5;
+  }
+}
+
+.grain-overlay::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.18;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+  background-size: 22px 22px;
+}
